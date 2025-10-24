@@ -1,4 +1,4 @@
-
+import {Background} from './background.js'
 import {Bird} from './Bird.js'
 
 const State = {
@@ -29,7 +29,7 @@ export default class Game {
         if (this.state == State.INTRO) {
             this.ctx.font = "30px serif"
             this.ctx.fillStyle = "rgba(0, 0, 0, 1"
-            this.ctx.fillText("Welcome Players", 240, 125)
+            this.ctx.fillText("FLAP BIRD", 400, 125)
             this.ctx.fillText("press SPACE to begin", 240, 250)
         }
         window.requestAnimationFrame(this.frame.bind(this))
@@ -69,7 +69,7 @@ class fakebird{
         ctx.fill()
     }
     animate(){
-        this.radius = (this.radius + 1)%100
+        this.radius = (this.radius + .5)%25
     }
 
     goToINTRO(){

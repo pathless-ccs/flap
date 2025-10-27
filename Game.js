@@ -18,6 +18,7 @@ export default class Game {
         document.addEventListener("keydown", this.keydown.bind(this))
         //document.addEventListener("keyup", this.keyup.bind(this))
         this.bird = new Bird ()
+        this.Background = new Background ()
         this.setState(State.INTRO)
     }
     run() {
@@ -35,6 +36,7 @@ export default class Game {
         window.requestAnimationFrame(this.frame.bind(this))
         this.bird.draw(this.ctx)
         this.bird.animate()
+        this.Background.draw(this.ctx)
     }
 
     keydown(event) {

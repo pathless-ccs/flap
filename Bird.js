@@ -17,7 +17,7 @@ export class Bird {
         this.radius = 25
         this.width = 34
         this.height = 24
-        this.gravity = 0.5
+        this.gravity = 0.05
         this.gravitySpeed = 0
         //angle goes here
         //flap sequence here
@@ -32,6 +32,7 @@ export class Bird {
         ctx.beginPath()
         ctx.arc(this.x, 360, this.radius, 0, Math.PI * 2)
         ctx.fill()
+        
     }
     animate(){
         this.radius = (this.radius + 1)%100

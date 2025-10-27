@@ -8,6 +8,7 @@ const State = {
     ASCENDING: "ascending"
 }
 
+
 export class Bird {
     constructor() {
         this.x = 0
@@ -22,11 +23,13 @@ export class Bird {
         this.isflying = false
         this.isgravity = false
         this.state = State.IDLE
+
+        this.img = new Image();
+        this.img.src = 'bird.png';
     } 
     
-
-
     draw(ctx) {
+        ctx.drawImage = (this.img, this.dx, this.dy)
         console.log("drawing bird at ", this.x, this.y)
         ctx.fillStyle = "rgba(7, 38, 13, 1)"
         ctx.beginPath()

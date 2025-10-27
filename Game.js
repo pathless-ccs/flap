@@ -18,6 +18,7 @@ export default class Game {
         document.addEventListener("keydown", this.keydown.bind(this))
         //document.addEventListener("keyup", this.keyup.bind(this))
         this.bird = new Bird ()
+        this.Background = new Background ()
         this.setState(State.INTRO)
     }
     run() {
@@ -33,8 +34,10 @@ export default class Game {
             this.ctx.fillText("press SPACE to begin", 240, 250)
         }
         window.requestAnimationFrame(this.frame.bind(this))
+        this.Background.draw(this.ctx)
         this.bird.draw(this.ctx)
         this.bird.animate()
+
     }
 
     keydown(event) {

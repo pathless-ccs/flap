@@ -17,8 +17,6 @@ export class Bird {
         this.radius = 25
         this.width = 34
         this.height = 24
-        this.gravity = 0.05
-        this.gravitySpeed = 0
         //angle goes here
         //flap sequence here
         this.isflying = false
@@ -26,16 +24,18 @@ export class Bird {
         this.state = State.IDLE
     } 
     
+
+
     draw(ctx) {
         console.log("drawing bird at ", this.x, this.y)
         ctx.fillStyle = "rgba(7, 38, 13, 1)"
         ctx.beginPath()
         ctx.arc(this.x, 360, this.radius, 0, Math.PI * 2)
         ctx.fill()
-        
+
     }
     animate(){
-        this.radius = (this.radius + 1)%100
+        this.y = (this.y + this.dy)
     }
 
     goToINTRO(){
@@ -49,11 +49,14 @@ export class Bird {
         if (state == State.IDLE){
             this.x = 480
             this.y = 360
-        }
-        else if (state == State.START){
+        } else if (state == State.READY){
             this.x = 200
+        } else if (state == State.FALLING) {
+            this.isgravity = true
         }
         this.state = state
+        
+
     }
 }
 

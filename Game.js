@@ -34,9 +34,10 @@ export default class Game {
             this.ctx.fillText("press SPACE to begin", 240, 250)
         }
         window.requestAnimationFrame(this.frame.bind(this))
+        this.Background.draw(this.ctx)
         this.bird.draw(this.ctx)
         this.bird.animate()
-        this.Background.draw(this.ctx)
+
     }
 
     keydown(event) {

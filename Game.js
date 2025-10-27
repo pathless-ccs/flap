@@ -17,7 +17,7 @@ export default class Game {
         this.ctx = canvas.getContext("2d")
         document.addEventListener("keydown", this.keydown.bind(this))
         //document.addEventListener("keyup", this.keyup.bind(this))
-        this.bird = new fakebird()
+        this.bird = new Bird ()
         this.setState(State.INTRO)
     }
     run() {
@@ -43,39 +43,20 @@ export default class Game {
                 this.setState(State.START)
             }
         }
+        if (this.state == State.READY) {
+            if (event.key == " ") {
+                this.setState(State.START)
+            }
+        }
     }
 
     setState(state){
         if (state == State.INTRO){
             this.bird.goToINTRO()
         }
-        else if (state == State.START){
+        else if (state == State.READY){
             this.bird.goToSTART()
         }
         this.state = state
-    }
-}
-
-
-class fakebird{
-    constructor() {
-        this.radius = 0
-        this.x = 480
-    }
-    draw(ctx) {
-        ctx.fillStyle = "rgba(7, 38, 13, 1)"
-        ctx.beginPath()
-        ctx.arc(this.x, 360, this.radius, 0, Math.PI * 2)
-        ctx.fill()
-    }
-    animate(){
-        this.radius = (this.radius + .5)%25
-    }
-
-    goToINTRO(){
-        this.x = 480
-    }
-    goToSTART(){
-        this.x = 200
     }
 }

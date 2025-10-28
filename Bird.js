@@ -26,7 +26,6 @@ export class Bird {
     } 
     
     draw(ctx) {
-        ctx.drawImage = (this.img, this.dx, this.dy)
         console.log("drawing bird at ", this.x, this.y)
         ctx.fillStyle = "rgba(7, 38, 13, 1)"
         ctx.beginPath()

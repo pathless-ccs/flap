@@ -2,7 +2,7 @@ export class Background {
     constructor(){
         this.x = 0
         this.y = 0
-        this.dx = .1
+        this.dx = 0.1
         this.dy = 0
         //Move Ground?
         this.img = new Image();
@@ -10,7 +10,8 @@ export class Background {
         //img.onload = () => {
     }
     draw(ctx){
-         ctx.drawImage(this.img, 0, 0, 1800, 1200, this.x, 0, 1800, 1600);
+        console.log(ctx)
+        ctx.drawImage(this.img, 0, 0, 1800, 1200, this.x, 0, 960, 720);
     }
     animate(ctx){
         this.x = (this.x + this.dx)

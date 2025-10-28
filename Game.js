@@ -18,7 +18,7 @@ export default class Game {
         document.addEventListener("keydown", this.keydown.bind(this))
         //document.addEventListener("keyup", this.keyup.bind(this))
         this.bird = new Bird ()
-        this.Background = new Background ()
+        this.background = new Background ()
         this.setState(State.INTRO)
     }
     run() {
@@ -27,7 +27,7 @@ export default class Game {
     }
     frame() {
         this.ctx.clearRect(0, 0, 960, 720)
-        this.Background.draw(this.ctx)
+        this.background.draw(this.ctx)
         if (this.state == State.INTRO) {
             this.ctx.font = "30px serif"
             this.ctx.fillStyle = "rgba(0, 0, 0, 1"
@@ -35,7 +35,7 @@ export default class Game {
             this.ctx.fillText("press SPACE to begin", 240, 250)
         }
         window.requestAnimationFrame(this.frame.bind(this))
-        this.Background.animate()
+        this.background.animate()
         this.bird.draw(this.ctx)
         this.bird.animate()
 

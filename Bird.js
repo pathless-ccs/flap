@@ -24,7 +24,7 @@ export class Bird {
         this.isgravity = false
         this.state = State.IDLE
         this.img = new Image();
-        this.img.src = 'bird.png';
+        this.img.src = 'zale.png';
     } 
     
     draw(ctx) {

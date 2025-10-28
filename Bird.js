@@ -16,22 +16,19 @@ export class Bird {
         this.dx = 0
         this.dy = 0
         this.radius = 25
-        this.width = 34
-        this.height = 24
+        this.width = 80
+        this.height = 55
         //angle goes here
         //flap sequence here
         this.isflying = false
         this.isgravity = false
         this.state = State.IDLE
+        this.img = new Image();
+        this.img.src = 'bird.png';
     } 
     
     draw(ctx) {
-        console.log("drawing bird at ", this.x, this.y)
-        ctx.fillStyle = "rgba(7, 38, 13, 1)"
-        ctx.beginPath()
-        ctx.arc(this.x, 360, this.radius, 0, Math.PI * 2)
-        ctx.fill()
-
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
     }
     animate(){
         this.y = (this.y + this.dy)

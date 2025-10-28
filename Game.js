@@ -38,7 +38,6 @@ export default class Game {
         this.Background.animate()
         this.bird.draw(this.ctx)
         this.bird.animate()
-
     }
 
     keydown(event) {

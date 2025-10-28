@@ -1,12 +1,12 @@
 export class Background {
-    constructor(){
+    constructor(imagefile,speed){
         this.x = 0
         this.y = 0
-        this.dx = -2
+        this.dx = speed
         this.dy = 0
         //Move Ground?
         this.img = new Image();
-        this.img.src = 'Background.webp';
+        this.img.src = imagefile;
         //img.onload = () => {
     }
     draw(ctx){

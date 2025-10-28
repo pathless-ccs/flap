@@ -18,7 +18,8 @@ export default class Game {
         document.addEventListener("keydown", this.keydown.bind(this))
         //document.addEventListener("keyup", this.keyup.bind(this))
         this.bird = new Bird ()
-        this.background = new Background ()
+        this.background = new Background ('Background.webp',2)
+        this.floor = new Background ('Floor.webp', 1)
         this.setState(State.INTRO)
     }
     run() {
@@ -27,7 +28,8 @@ export default class Game {
     }
     frame() {
         this.ctx.clearRect(0, 0, 960, 720)
-        this.background.draw(this.ctx)
+       // this.background.draw(this.ctx)
+        this.floor.draw(this.ctx)
         if (this.state == State.INTRO) {
             this.ctx.font = "30px serif"
             this.ctx.fillStyle = "rgba(0, 0, 0, 1"
@@ -36,6 +38,7 @@ export default class Game {
         }
         window.requestAnimationFrame(this.frame.bind(this))
         this.background.animate()
+        this.floor.animate()
         this.bird.draw(this.ctx)
         this.bird.animate()
     }

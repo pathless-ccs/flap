@@ -43,13 +43,16 @@ export class Bird {
                 this.setBirdState(BirdState.READY)
             }
         }
+        if (this.isgravity) {
+            this.dy += 1
+        }
     }
 
     prepare(){
         this.setBirdState(BirdState.GETTINGREADY)
     }
     beginFlying(){
-       this.setBirdState(this.state.READY)
+       this.setBirdState(BirdState.FALLING)
     }
 
     setBirdState(state){

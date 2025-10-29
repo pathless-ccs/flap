@@ -26,14 +26,23 @@ export class Bird {
         this.state = BirdState.IDLE
         this.img = new Image();
         this.img.src = 'zale.png';
+        this.setBirdState(BirdState.IDLE)
     } 
     
+
+
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
     }
     animate(){
         this.y = (this.y + this.dy)
         this.x = (this.x +this.dx)
+        if (this.state == BirdState.GETTINGREADY) {
+            this.stateCounter -= 1
+            if (this.stateCounter == 0) {
+                this.setBirdState(BirdState.READY)
+            }
+        }
     }
 
     prepare(){
@@ -47,10 +56,12 @@ export class Bird {
         if (state == BirdState.IDLE){
             this.x = 480
             this.y = 360
+            this.dx = 0
         }else if (state == BirdState.GETTINGREADY){
-            this.dx = -10
+          this.dx = -10
+          this.stateCounter = 30
         } else if (state == BirdState.READY){
-            this.x = 200
+            this.dx = 0
         } else if (state == BirdState.FALLING) {
             this.isgravity = true
         }

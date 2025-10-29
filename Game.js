@@ -46,22 +46,21 @@ export default class Game {
     keydown(event) {
         if (this.state == GameState.INTRO) {
             if (event.key == " ") {
-                this.setState(GameState.START)
+                this.setState(GameState.READY)
             }
         }
         if (this.state == GameState.READY) {
             if (event.key == " ") {
-                this.setState(GameState.START)
+                this.setState(GameState.READY)
             }
         }
     }
 
     setState(state){
-        if (state == GameState.INTRO){
-            this.bird.prepare()
+        if (state == GameState.IDLE){
         }
         else if (state == GameState.READY){
-            this.bird.beginFlying()
+            this.bird.prepare()
         }
         this.state = state
     }

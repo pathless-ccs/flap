@@ -6,8 +6,7 @@ const GameState = {
     READY: "ready",
     HITPIPE: "hitpipe",
     HITGROUND: "hitground",
-    FALLING: "falling",
-    ASCENDING: "ascending",
+    PLAYING: 'playing'
 }
 
 export default class Game {
@@ -49,9 +48,14 @@ export default class Game {
                 this.setState(GameState.READY)
             }
         }
-        if (this.state == GameState.READY) {
+        else if (this.state == GameState.READY) {
             if (event.key == " ") {
-                this.setState(GameState.READY)
+                this.setState(GameState.PLAYING)
+            }
+        }
+        else if (this.state == GameState.PLAYING) {
+            if (event.key == " ") {
+                this.bird.jump()
             }
         }
     }
@@ -61,6 +65,9 @@ export default class Game {
         }
         else if (state == GameState.READY){
             this.bird.prepare()
+        }
+        else if (state == GameState.PLAYING){
+            this.bird.beginFlying()
         }
         this.state = state
     }

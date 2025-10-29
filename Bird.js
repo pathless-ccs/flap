@@ -1,7 +1,8 @@
 //setting states in a new way or format
-const State = {
+const BirdState = {
     IDLE: "idle",
     READY: "ready",
+    GETTINGREADY: "gettingready",
     HITPIPE: "hitpipe",
     HITGROUND: "hitground",
     FALLING: "falling",
@@ -22,7 +23,7 @@ export class Bird {
         //flap sequence here
         this.isflying = false
         this.isgravity = false
-        this.state = State.IDLE
+        this.state = BirdState.IDLE
         this.img = new Image();
         this.img.src = 'zale.png';
     } 
@@ -32,22 +33,25 @@ export class Bird {
     }
     animate(){
         this.y = (this.y + this.dy)
+        this.x = (this.x +this.dx)
     }
 
-    goToINTRO(){
-        this.setState(State.IDLE)
+    prepare(){
+        this.setBirdState(BirdState.GETTINGREADY)
     }
-    goToSTART(){
-       this.setState(this.state.READY)
+    beginFlying(){
+       this.setBirdState(this.state.READY)
     }
 
-    setState(state){
-        if (state == State.IDLE){
+    setBirdState(state){
+        if (state == BirdState.IDLE){
             this.x = 480
             this.y = 360
-        } else if (state == State.READY){
+        }else if (state == BirdState.GETTINGREADY){
+            this.dx = -10
+        } else if (state == BirdState.READY){
             this.x = 200
-        } else if (state == State.FALLING) {
+        } else if (state == BirdState.FALLING) {
             this.isgravity = true
         }
         this.state = state

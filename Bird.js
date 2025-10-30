@@ -73,9 +73,11 @@ export class Bird {
         } else if (state == BirdState.FALLING) {
             this.isgravity = true
         }
+        if (state == BirdState.ASCENDING) {
+            this.dy -= 10
+        }
         this.state = state
         
-
     }
 }
 

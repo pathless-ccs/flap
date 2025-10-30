@@ -44,7 +44,7 @@ export class Bird {
             }
         }
         if (this.isgravity) {
-            this.dy += 1
+            this.dy += 0.25
         }
     }
 
@@ -54,6 +54,11 @@ export class Bird {
     beginFlying(){
        this.setBirdState(BirdState.FALLING)
     }
+
+    jump() {
+        this.setBirdState(BirdState.ASCENDING)
+    }
+
 
     setBirdState(state){
         if (state == BirdState.IDLE){
@@ -68,9 +73,11 @@ export class Bird {
         } else if (state == BirdState.FALLING) {
             this.isgravity = true
         }
+        if (state == BirdState.ASCENDING) {
+            this.dy -= 10
+        }
         this.state = state
         
-
     }
 }
 

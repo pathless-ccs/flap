@@ -24,8 +24,28 @@ export class Bird {
         this.isflying = false
         this.isgravity = false
         this.state = BirdState.IDLE
-        this.img = new Image();
-        this.img.src = 'zale.png';
+        imagesArray = new Array(9)
+        imagesArray[0] = new Image();
+        imagesArray[0].src = new "jasper.png";
+        imagesArray[1] = new Image();
+        imagesArray[1].src = new "tyler.png";
+        imagesArray[2] = new Image();
+        imagesArray[2].src = new "nicetyler.png";
+        imagesArray[3] = new Image();
+        imagesArray[3].src = new "zale.png";
+        imagesArray[4] = new Image();
+        imagesArray[4].src = new "duo.png";
+        imagesArray[5] = new Image();
+        imagesArray[5].src = new "emma.png";
+        imagesArray[6] = new Image();
+        imagesArray[6].src = new "badtyler.png";
+        imagesArray[7] = new Image();
+        imagesArray[7].src = new "melodih.png";
+        imagesArray[8] = new Image();
+        imagesArray[8].src = new "connor.png";
+        this.faceid
+        //this.img = new Image();
+        //this.img.src = 'zale.png';
         this.setBirdState(BirdState.IDLE)
     } 
 
@@ -57,14 +77,14 @@ export class Bird {
         this.setBirdState(BirdState.ASCENDING)
     }
 
-    ground() {
+/*    ground() {
         this.setBirdState(BirdState.HITGROUND)
     }
 
     pipe() {
         this.setBirdState(BirdState.HITPIPE)
     }
-
+*/
     setBirdState(state){
         if (state == BirdState.IDLE){
             this.x = 480
@@ -83,6 +103,11 @@ export class Bird {
         }
         else if (state == BirdState.HITGROUND) {
             this.dy = 0
+            this.isgravity = false
+        }
+        else if (state == BirdState.HITPIPE) {
+            this.dy = 0
+            this.isgravity = false
         }
         this.state = state     
     }

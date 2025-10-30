@@ -6,7 +6,8 @@ const GameState = {
     READY: "ready",
     HITPIPE: "hitpipe",
     HITGROUND: "hitground",
-    PLAYING: 'playing'
+    PLAYING: 'playing',
+    DEAD: 'dead'
 }
 
 export default class Game {
@@ -69,6 +70,12 @@ export default class Game {
         else if (state == GameState.PLAYING){
             this.bird.beginFlying()
         }
+     /*  else if (state == GameState.HITGROUND) {
+            this.bird.ground()
+        }
+        else if (state == GameState.HITPIPE) {
+            this.bird.pipe()
+        }*/
         this.state = state
     }
 }

@@ -28,8 +28,6 @@ export class Bird {
         this.img.src = 'zale.png';
         this.setBirdState(BirdState.IDLE)
     } 
-    
-
 
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
@@ -59,7 +57,6 @@ export class Bird {
         this.setBirdState(BirdState.ASCENDING)
     }
 
-
     setBirdState(state){
         if (state == BirdState.IDLE){
             this.x = 480
@@ -74,12 +71,8 @@ export class Bird {
             this.isgravity = true
         }
         if (state == BirdState.ASCENDING) {
-            this.dy -= 10
+            this.dy = -6
         }
-        this.state = state
-        
+        this.state = state     
     }
 }
-
-
-

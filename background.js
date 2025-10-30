@@ -10,8 +10,8 @@ export class Background {
         //img.onload = () => {
     }
     draw(ctx){
-        ctx.drawImage(this.img, this.x, 0, 960, 720);
-        ctx.drawImage(this.img, this.x + 960, 0, 960, 720);
+        ctx.drawImage(this.img, this.x, 0, 960, 820);
+        ctx.drawImage(this.img, this.x + 960, 0, 960, 820);
     }
     animate(ctx){
         this.x = (this.x + this.dx)

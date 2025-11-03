@@ -1,5 +1,6 @@
 import {Background} from './background.js'
 import {Bird} from './Bird.js'
+import {Pipe} from './Pipe.js'
 
 const GameState = {
     INTRO: "intro",
@@ -20,6 +21,7 @@ export default class Game {
         this.bird = new Bird ()
         this.background = new Background ('Background.webp',-1)
         this.floor = new Background ('Floor2.webp', -2)
+        this.pipe = new Pipe ('pipe.png',-2)
         this.setState(GameState.INTRO)
     }
     run() {
@@ -30,6 +32,7 @@ export default class Game {
         this.ctx.clearRect(0, 0, 960, 720)
         this.background.draw(this.ctx)
         this.floor.draw(this.ctx)
+        this.pipe.draw(this.ctx)
         if (this.state == GameState.INTRO) {
             this.ctx.font = "30px serif"
             this.ctx.fillStyle = "rgba(0, 0, 0, 1"
@@ -37,6 +40,7 @@ export default class Game {
             this.ctx.fillText("press SPACE to begin", 240, 250)
         }
         window.requestAnimationFrame(this.frame.bind(this))
+        this.pipe.animate()
         this.background.animate()
         this.floor.animate()
         this.bird.draw(this.ctx)

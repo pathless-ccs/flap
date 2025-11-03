@@ -17,10 +17,9 @@ export class Pipe {
         this.img.src = 'pipe.png';
         this.setPipeState(PipeState.IDLE)
     }    
-    this.pipe.draw()
-   // draw(ctx) {
-       // ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
-   // }
+    draw(ctx) {
+       ctx.drawImage(this.img, this.x, this.y)
+    }
     animate(){
         this.y = (this.y + this.dy)
         this.x = (this.x +this.dx)
@@ -41,7 +40,6 @@ export class Pipe {
             this.dx = 0
         }else if (state == PipeState.PLAYING){
           this.dx = -10
-          this.stateCounter = 30
         } else if (state == PipeState.GAMEOVER){
             this.dx = 0
         }

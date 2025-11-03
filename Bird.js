@@ -52,9 +52,15 @@ export class Bird {
         this.imagesArray[12].src = "haydih.png";
         this.imagesArray[13] = new Image();
         this.imagesArray[13].src = "anai.png";
-        this.img = this.imagesArray[Math.floor(Math.random() * 13.99999999)]
-        //this.img = new Image();
-        //this.img.src = 'zale.png';
+        this.imagesArray[14] = new Image();
+        this.imagesArray[14].src = "sophington.png";
+        this.imagesArray[15] = new Image();
+        this.imagesArray[15].src = "melody.png";
+        this.imagesArray[16] = new Image();
+        this.imagesArray[16].src = "car.png";
+        this.imagesArray[17] = new Image();
+        this.imagesArray[17].src = "chain.png";
+        this.img = this.imagesArray[Math.floor(Math.random() * 17.99999999)]
         this.setBirdState(BirdState.IDLE)
     } 
 

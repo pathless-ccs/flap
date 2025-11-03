@@ -4,6 +4,7 @@ import {Bird} from './Bird.js'
 const GameState = {
     INTRO: "intro",
     READY: "ready",
+    GETTINGREADY: "gettingready",
     HITPIPE: "hitpipe",
     HITGROUND: "hitground",
     PLAYING: 'playing',
@@ -46,7 +47,7 @@ export default class Game {
     keydown(event) {
         if (this.state == GameState.INTRO) {
             if (event.key == " ") {
-                this.setState(GameState.READY)
+                this.setState(GameState.GETTINGREADY)
             }
         }
         else if (this.state == GameState.READY) {

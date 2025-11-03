@@ -9,7 +9,6 @@ const BirdState = {
     ASCENDING: "ascending"
 }
 
-
 export class Bird {
     constructor() {
         this.x = 0
@@ -24,26 +23,26 @@ export class Bird {
         this.isflying = false
         this.isgravity = false
         this.state = BirdState.IDLE
-        imagesArray = new Array(9)
-        imagesArray[0] = new Image();
-        imagesArray[0].src = new "jasper.png";
-        imagesArray[1] = new Image();
-        imagesArray[1].src = new "tyler.png";
-        imagesArray[2] = new Image();
-        imagesArray[2].src = new "nicetyler.png";
-        imagesArray[3] = new Image();
-        imagesArray[3].src = new "zale.png";
-        imagesArray[4] = new Image();
-        imagesArray[4].src = new "duo.png";
-        imagesArray[5] = new Image();
-        imagesArray[5].src = new "emma.png";
-        imagesArray[6] = new Image();
-        imagesArray[6].src = new "badtyler.png";
-        imagesArray[7] = new Image();
-        imagesArray[7].src = new "melodih.png";
-        imagesArray[8] = new Image();
-        imagesArray[8].src = new "connor.png";
-        this.faceid
+        this.imagesArray = new Array(9)
+        this.imagesArray[0] = new Image();
+        this.imagesArray[0].src = "jasper.png";
+        this.imagesArray[1] = new Image();
+        this.imagesArray[1].src = "tyler.png";
+        this.imagesArray[2] = new Image();
+        this.imagesArray[2].src = "nicetyler.png";
+        this.imagesArray[3] = new Image();
+        this.imagesArray[3].src = "zale.png";
+        this.imagesArray[4] = new Image();
+        this.imagesArray[4].src = "duo.png";
+        this.imagesArray[5] = new Image();
+        this.imagesArray[5].src = "emma.png";
+        this.imagesArray[6] = new Image();
+        this.imagesArray[6].src = "badtyler.png";
+        this.imagesArray[7] = new Image();
+        this.imagesArray[7].src = "melodih.png";
+        this.imagesArray[8] = new Image();
+        this.imagesArray[8].src = "connor.png";
+        this.img = this.imagesArray[Math.floor(Math.random() * 8.99999999)]
         //this.img = new Image();
         //this.img.src = 'zale.png';
         this.setBirdState(BirdState.IDLE)

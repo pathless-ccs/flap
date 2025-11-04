@@ -5,6 +5,7 @@ import {Pipe} from './Pipe.js'
 const GameState = {
     INTRO: "intro",
     READY: "ready",
+    GETTINGREADY: "gettingready",
     HITPIPE: "hitpipe",
     HITGROUND: "hitground",
     PLAYING: 'playing',
@@ -33,24 +34,39 @@ export default class Game {
         this.background.draw(this.ctx)
         this.floor.draw(this.ctx)
         this.pipe.draw(this.ctx)
+        this.bird.draw(this.ctx)
+
         if (this.state == GameState.INTRO) {
-            this.ctx.font = "30px serif"
-            this.ctx.fillStyle = "rgba(0, 0, 0, 1"
-            this.ctx.fillText("FLAP BIRD", 400, 125)
-            this.ctx.fillText("press SPACE to begin", 240, 250)
+            this.ctx.font = "70px monospace"
+            this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
+            this.ctx.fillText("FLAPPY BIRD", 300, 200)
+          /*  this.ctx.font = "50px monospace"
+            this.ctx.fillStyle = "rgb(0, 0, 0)"
+            this.ctx.fillText("press SPACE to begin", 240, 550) */
         }
-        window.requestAnimationFrame(this.frame.bind(this))
+        else if (this.state == GameState.READY) {
+            this.ctx.font = "70px monospace"
+            this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
+            this.ctx.fillText("PRESS SPACE", 300, 200)
+        }
+
         this.pipe.animate()
         this.background.animate()
-        this.floor.animate()
-        this.bird.draw(this.ctx)
+        this.floor.animate()  
         this.bird.animate()
+
+        if (this.state == GameState.GETTINGREADY) {
+           if (this.bird.isReady())
+            this.setState(GameState.READY)
+        }
+
+        window.requestAnimationFrame(this.frame.bind(this))
     }
 
     keydown(event) {
         if (this.state == GameState.INTRO) {
             if (event.key == " ") {
-                this.setState(GameState.READY)
+                this.setState(GameState.GETTINGREADY)
             }
         }
         else if (this.state == GameState.READY) {
@@ -69,19 +85,17 @@ export default class Game {
         console.log(`set game state to ${state}`)
         if (state == GameState.IDLE){
         }
-        else if (state == GameState.READY){
+
+        else if (state == GameState.GETTINGREADY){
             this.bird.prepare()
+        }
+        else if (state == GameState.READY) {
+            
         }
         else if (state == GameState.PLAYING){
             this.bird.beginFlying()
             this.pipe.startMoving()
         }
-     /*  else if (state == GameState.HITGROUND) {
-            this.bird.ground()
-        }
-        else if (state == GameState.HITPIPE) {
-            this.bird.pipe()
-        }*/
         this.state = state
     }
 }

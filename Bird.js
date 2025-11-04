@@ -95,6 +95,7 @@ export class Bird {
     }
 */
     setBirdState(state){
+        console.log(`set bird state to ${state}`)
         if (state == BirdState.IDLE){
             this.x = 480
             this.y = 360

@@ -7,10 +7,10 @@ const PipeState = {
 
 
 export class Pipe {
-    constructor() {
+    constructor(speed) {
         this.x = 0
         this.y = 0
-        this.dx = 0
+        this.dx = speed
         this.dy = 0
         this.isvisable = false
         this.img = new Image();
@@ -21,21 +21,23 @@ export class Pipe {
        ctx.drawImage(this.img, this.x, this.y)
     }
     animate(){
-        this.y = (this.y + this.dy)
-        this.x = (this.x +this.dx)
+        this.y += this.dy
+        this.x += this.dx
     }
 
-    startmoving(){
-       this.setPipeState(PipeState.FALLING)
+    startMoving(){
+       this.setPipeState(PipeState.PLAYING)
     }
-    stopmoving(){
+    stopMoving(){
         this.setPipeState(PipeState.GAMEOVER)
     }
 
 
     setPipeState(state){
+        console.log(`set pipe state to ${state}`)
         if (state == PipeState.IDLE){
-            this.x = 480
+            console.log("setting pipe coordinates")
+            this.x = 800
             this.y = 360
             this.dx = 0
         }else if (state == PipeState.PLAYING){

@@ -21,7 +21,7 @@ export default class Game {
         this.bird = new Bird ()
         this.background = new Background ('Background.webp',-1)
         this.floor = new Background ('Floor2.webp', -2)
-        this.pipe = new Pipe ('pipe.png',-2)
+        this.pipe = new Pipe (-2)
         this.setState(GameState.INTRO)
     }
     run() {
@@ -66,6 +66,7 @@ export default class Game {
     }
 
     setState(state){
+        console.log(`set game state to ${state}`)
         if (state == GameState.IDLE){
         }
         else if (state == GameState.READY){
@@ -73,6 +74,7 @@ export default class Game {
         }
         else if (state == GameState.PLAYING){
             this.bird.beginFlying()
+            this.pipe.startMoving()
         }
      /*  else if (state == GameState.HITGROUND) {
             this.bird.ground()

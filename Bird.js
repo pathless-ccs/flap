@@ -92,14 +92,9 @@ export class Bird {
         this.setBirdState(BirdState.ASCENDING)
     }
 
-/*    ground() {
-        this.setBirdState(BirdState.HITGROUND)
+    isReady() {
+        return (this.state == BirdState.READY)
     }
-
-    pipe() {
-        this.setBirdState(BirdState.HITPIPE)
-    }
-*/
     setBirdState(state){
         if (state == BirdState.IDLE){
             this.x = 480

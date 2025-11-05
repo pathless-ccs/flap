@@ -12,7 +12,7 @@ const GameState = {
     DEAD: 'dead'
 }
 
-export default class Game {
+export default class Game { 
     constructor() {
         
         const canvas = document.getElementById("game")

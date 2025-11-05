@@ -40,9 +40,6 @@ export default class Game {
             this.ctx.font = "70px monospace"
             this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
             this.ctx.fillText("FLAPPY BIRD", 300, 200)
-          /*  this.ctx.font = "50px monospace"
-            this.ctx.fillStyle = "rgb(0, 0, 0)"
-            this.ctx.fillText("press SPACE to begin", 240, 550) */
         }
         else if (this.state == GameState.READY) {
             this.ctx.font = "70px monospace"

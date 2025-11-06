@@ -18,6 +18,7 @@ export class Bird {
         this.radius = 25
         this.width = 60
         this.height = 55
+        this.statecounter = 0
         //angle goes here
         this.bobangle = 0
         //flap sequence here
@@ -51,28 +52,32 @@ export class Bird {
     } 
 
     draw(ctx) { 
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
+        var height = this.height
+        var scale = this.height/this.img.height
+        var width = this.img.width*scale
+
         ctx.save()
         ctx.translate(this.x, this.y)
         ctx.rotate(((this.bobangle * 4) * Math.PI) / 180)
+        ctx.drawImage(this.img, -width/2, 0, width, height)
         ctx.restore()
     }
+    
     animate(){
         this.y = (this.y + this.dy)
-        this.x = (this.x +this.dx)
-        if (this.state == BirdState.GETTINGREADY) {
-            this.stateCounter -= 1
-            if (this.stateCounter == 0) {
-                this.setBirdState(BirdState.READY)
-            }
-        }
+        this.x = (this.x +this.dx) 
         if (this.isgravity) {
             this.dy += 0.25
         }
 
         this.bobangle = (this.bobangle * 0.90) + (this.dy * 0.10)
 
-
+        if (this.state == BirdState.GETTINGREADY) {
+            this.stateCounter -= 1
+            if (this.stateCounter == 0) {
+                this.setBirdState(BirdState.READY)
+            } 
+        }
     }
 
     prepare(){

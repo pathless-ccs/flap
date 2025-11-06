@@ -7,8 +7,8 @@ const PipeState = {
 
 
 export class Pipe {
-    constructor(speed) {
-        this.x = 0
+    constructor(speed, startingPOS) {
+        this.x = startingPOS
         this.yCenter = 0
         this.opening = 200
         this.dx = speed
@@ -34,6 +34,10 @@ export class Pipe {
     animate(){
         this.yCenter += this.dy
         this.x += this.dx
+        this.x = (this.x + this.dx)
+        if(this.x == -960){
+            this.x = 960
+        }
     }
 
     startMoving(){
@@ -49,10 +53,10 @@ export class Pipe {
         if (state == PipeState.IDLE){
             console.log("setting pipe coordinates")
             this.x = 1000
-            this.yCenter = 200
+            this.yCenter = 500
             this.dx = 0
         }else if (state == PipeState.PLAYING){
-          this.dx = -10
+          this.dx = -2 
         } else if (state == PipeState.GAMEOVER){
             this.dx = 0
         }

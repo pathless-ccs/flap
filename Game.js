@@ -12,7 +12,7 @@ const GameState = {
     DEAD: 'dead'
 }
 
-export default class Game { 
+export default class Game {     
     constructor() {
         
         const canvas = document.getElementById("game")
@@ -20,10 +20,13 @@ export default class Game {
         document.addEventListener("keydown", this.keydown.bind(this))
         //document.addEventListener("keyup", this.keyup.bind(this))
         this.bird = new Bird ()
-        this.background = new Background ('Background.webp',-1)
-        this.floor = new Background ('Floor2.webp', -2)
-        this.pipe = new Pipe (-2)
+        this.background = new Background ('Background.webp',-.5)
+        this.floor = new Background ('Floor2.webp', -4)
+        this.createPipes()
         this.setState(GameState.INTRO)
+    }
+    createPipes(){
+        this.pipe = new Pipe (-2)
     }
     run() {
         console.log ("running the game")

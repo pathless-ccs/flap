@@ -26,7 +26,12 @@ export default class Game {
         this.setState(GameState.INTRO)
     }
     createPipes(){
-        this.pipe = new Pipe (-2)
+        this.pipes = []
+        this.pipes[0] = new Pipe (-2, 1000)
+        this.pipes[1] = new Pipe (-2, 1192) 
+        this.pipes[2] = new Pipe (-2, 1384) 
+        this.pipes[3] = new Pipe (-2, 1576) 
+        this.pipes[4] = new Pipe (-2, 1768)   
     }
     run() {
         console.log ("running the game")
@@ -35,9 +40,11 @@ export default class Game {
     frame() {
         this.ctx.clearRect(0, 0, 960, 720)
         this.background.draw(this.ctx)
+        this.bird.draw(this.ctx)       
         this.floor.draw(this.ctx)
-        this.pipe.draw(this.ctx)
-        this.bird.draw(this.ctx)
+        for (let i = 0; i < this.pipes.length; i++){
+            this.pipes[i].draw(this.ctx)
+        }
 
         if (this.state == GameState.INTRO) {
             this.ctx.font = "70px monospace"
@@ -50,10 +57,12 @@ export default class Game {
             this.ctx.fillText("PRESS SPACE", 300, 200)
         }
 
-        this.pipe.animate()
         this.background.animate()
         this.floor.animate()  
         this.bird.animate()
+        for (let i = 0; i < this.pipes.length; i++){
+            this.pipes[i].animate()
+        }
 
         if (this.state == GameState.GETTINGREADY) {
            if (this.bird.isReady())
@@ -94,7 +103,9 @@ export default class Game {
         }
         else if (state == GameState.PLAYING){
             this.bird.beginFlying()
-            this.pipe.startMoving()
+        for (let i = 0; i < this.pipes.length; i++){
+            this.pipes[i].startMoving()
+        }
         }
         this.state = state
     }

@@ -8,7 +8,7 @@ const PipeState = {
 
 export class Pipe {
     constructor(speed, startingPOS) {
-        this.x = startingPOS
+        this.startingPOS = startingPOS
         this.yCenter = 0
         this.opening = 200
         this.dx = speed
@@ -35,7 +35,7 @@ export class Pipe {
         this.yCenter += this.dy
         this.x += this.dx
         this.x = (this.x + this.dx)
-        if(this.x == -960){
+        if(this.x == -100){
             this.x = 960
         }
     }
@@ -52,7 +52,7 @@ export class Pipe {
         console.log(`set pipe state to ${state}`)
         if (state == PipeState.IDLE){
             console.log("setting pipe coordinates")
-            this.x = 1000
+            this.x = this.startingPOS
             this.yCenter = 500
             this.dx = 0
         }else if (state == PipeState.PLAYING){

@@ -1,6 +1,7 @@
 import {Background} from './background.js'
 import {Bird} from './Bird.js'
 import {Pipe} from './Pipe.js'
+import {Floor} from './Floor.js'
 
 const GameState = {
     INTRO: "intro",
@@ -35,6 +36,8 @@ export default class Game {
     run() {
         console.log ("running the game")
         this.frame()
+
+    
     }
     frame() {
         this.ctx.clearRect(0, 0, 960, 720)
@@ -63,12 +66,30 @@ export default class Game {
             this.pipes[i].animate()
         }
 
+        if (this.checkCollision(this.bird.boundingBox(),this.floor.boundingBox())) {
+
+        }
+
         if (this.state == GameState.GETTINGREADY) {
            if (this.bird.isReady())
             this.setState(GameState.READY)
         }
 
         window.requestAnimationFrame(this.frame.bind(this))
+    }
+
+    checkCollision(obj1, obj2) {
+        if (
+            obj1.x < obj2.x + obj2.width &&
+            obj1.x +obj1.width > obj2.x &&
+            obj1.y < obj2.y + obj2.height &&
+            obj1.y + obj1.height > obj2.y 
+        ) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     keydown(event) {

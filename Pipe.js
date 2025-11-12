@@ -13,10 +13,11 @@ export class Pipe {
         this.opening = 200
         this.dx = speed
         this.dy = 0
-        this.isvisable = false
+        this.isvisable = false 
         this.img = new Image();
         this.img.src = 'pipe.png';
         this.setPipeState(PipeState.IDLE)
+
     }    
     draw(ctx) {
         if (this.state != PipeState.IDLE) {
@@ -38,6 +39,7 @@ export class Pipe {
         if(this.x == -100){
             this.x = 960
         }
+
     }
 
     startMoving(){
@@ -53,7 +55,7 @@ export class Pipe {
         if (state == PipeState.IDLE){
             console.log("setting pipe coordinates")
             this.x = this.startingPOS
-            this.yCenter = 500
+            this.yCenter = 430+Math.random()*-200
             this.dx = 0
         }else if (state == PipeState.PLAYING){
           this.dx = -2 

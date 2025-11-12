@@ -10,8 +10,8 @@ export class Floor {
         //img.onload = () => {
     }
     draw(ctx){
-        ctx.drawImage(this.img, this.x, (960 - this.img.height));
-        ctx.drawImage(this.img, this.x + 960, (960 - this.img.height));
+        ctx.drawImage(this.img, this.x, (1000 - this.img.height));
+        ctx.drawImage(this.img, this.x + 960, (1000 - this.img.height));
     }
     animate(ctx){
         this.x = (this.x + this.dx)

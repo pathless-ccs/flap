@@ -94,6 +94,10 @@ export class Bird {
     isReady() {
         return (this.state == BirdState.READY)
     }
+
+    boundingBox() {
+        return {x: this.x, width: this.height, y: this.y, height: this.height}
+    }
     setBirdState(state){
         console.log(`set bird state to ${state}`)
         if (state == BirdState.IDLE){

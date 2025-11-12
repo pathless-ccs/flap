@@ -22,7 +22,7 @@ export default class Game {
         //document.addEventListener("keyup", this.keyup.bind(this))
         this.bird = new Bird ()
         this.background = new Background ('Background.webp',-.5)
-        this.floor = new Background ('Floor2.webp', -4)
+        this.floor = new Floor ('Floor2.webp', -4)
         this.createPipes()
         this.setState(GameState.INTRO)
     }

@@ -10,8 +10,8 @@ export class Floor {
         //img.onload = () => {
     }
     draw(ctx){
-        ctx.drawImage(this.img, this.x, 0, 960, 820);
-        ctx.drawImage(this.img, this.x + 960, 0, 960, 820);
+        ctx.drawImage(this.img, this.x, (960 - this.img.height));
+        ctx.drawImage(this.img, this.x + 960, (960 - this.img.height));
     }
     animate(ctx){
         this.x = (this.x + this.dx)
@@ -19,6 +19,10 @@ export class Floor {
             this.x = 0
         }
     } 
+
+    boundingBox() {    
+        return {x: this.x, width: this.height, y: this.y, height: this.height}
+    }
 }
  
 

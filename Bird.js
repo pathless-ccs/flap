@@ -98,6 +98,13 @@ export class Bird {
     boundingBox() {
         return {x: this.x, width: this.height, y: this.y, height: this.height}
     }
+    hittingThePipe() {
+        this.setState(BirdState.HITPIPE)
+    }
+    hittingTheGround() {
+        this.setState(BirdState.HITGROUND)
+    }
+    
     setBirdState(state){
         console.log(`set bird state to ${state}`)
         if (state == BirdState.IDLE){

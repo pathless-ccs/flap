@@ -10,7 +10,7 @@ const GameState = {
     HITPIPE: "hitpipe",
     HITGROUND: "hitground",
     PLAYING: 'playing',
-    DEAD: 'dead'
+    GAMEOVER: 'gameover'
 }
 
 export default class Game {     
@@ -67,7 +67,8 @@ export default class Game {
         }
 
         if (this.checkCollision(this.bird.boundingBox(),this.floor.boundingBox())) {
-
+            console.log("bird hit floor")
+            this.setState(GameState.GAMEOVER)
         }
 
         if (this.state == GameState.GETTINGREADY) {
@@ -126,6 +127,12 @@ export default class Game {
         for (let i = 0; i < this.pipes.length; i++){
             this.pipes[i].startMoving()
         }
+        }
+        else if (state == GameState.GAMEOVER) {
+            this.pipe.stopMoving()
+            this.bird.hittingTheGround()
+            this.floor.gameover()
+            this.background.notMoving()
         }
         this.state = state
     }

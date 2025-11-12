@@ -34,7 +34,6 @@ export default class Game {
         }
     }
     run() {
-        console.log ("running the game")
         this.frame()
 
     
@@ -50,13 +49,18 @@ export default class Game {
 
         if (this.state == GameState.INTRO) {
             this.ctx.font = "70px monospace"
+            this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
+            this.ctx.fillText("FLAPPY ", 300, 300)
+            this.ctx.font = "70px monospace"
             this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
-            this.ctx.fillText("FLAPPY BIRD", 300, 200)
+            this.ctx.fillText("BIRD", 550, 300)
         }
         else if (this.state == GameState.READY) {
-            this.ctx.font = "70px monospace"
+            this.ctx.font = "50px monospace"
+            this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
+            this.ctx.fillText("PRESS", 300, 500)
             this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
-            this.ctx.fillText("PRESS SPACE", 300, 200)
+            this.ctx.fillText("SPACE to play!", 460, 500)
         }
 
         this.background.animate()

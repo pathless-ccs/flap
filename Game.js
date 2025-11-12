@@ -27,12 +27,11 @@ export default class Game {
         this.setState(GameState.INTRO)
     }
     createPipes(){
-        this.pipes = []
-        this.pipes[0] = new Pipe (-2, 1000)
-        this.pipes[1] = new Pipe (-2, 1192) 
-        this.pipes[2] = new Pipe (-2, 1384) 
-        this.pipes[3] = new Pipe (-2, 1576) 
-        this.pipes[4] = new Pipe (-2, 1768)   
+        var numberpipes = 5 
+        this.pipes = [] 
+        for (let i = 0; i < numberpipes; i++){
+            this.pipes[i] = new Pipe (-2, 960+((1060/numberpipes)*i))
+        }
     }
     run() {
         console.log ("running the game")

@@ -37,7 +37,7 @@ export class Pipe {
         this.x += this.dx
         this.x = (this.x + this.dx)
         if(this.x <= -100){
-            this.x + = 1060
+            this.x += 1060
         }
 
     }

@@ -21,6 +21,7 @@ export class Bird {
         this.statecounter = 0
         //angle goes here
         this.bobangle = 0
+        this.bobheight = 0
         //flap sequence here
         this.isflying = false
         this.isgravity = false
@@ -55,10 +56,9 @@ export class Bird {
         var height = this.height
         var scale = this.height/this.img.height
         var width = this.img.width*scale
-
         ctx.save()
-        ctx.translate(this.x, this.y)
-        ctx.rotate(((this.bobangle * 4) * Math.PI) / 180)
+        ctx.translate(this.x, this.y + Math.sin(this.bobheight)*5)
+        ctx.rotate(((this.bobangle * 3) * Math.PI) / 180)
         ctx.drawImage(this.img, -width/2, 0, width, height)
         ctx.restore()
     }
@@ -70,7 +70,9 @@ export class Bird {
             this.dy += 0.25
         }
 
-        this.bobangle = (this.bobangle * 0.90) + (this.dy * 0.10)
+        this.bobangle = (this.bobangle * 0.95) + (this.dy * 0.05)
+
+        this.bobheight += 0.1
 
         if (this.state == BirdState.GETTINGREADY) {
             this.stateCounter -= 1
@@ -125,10 +127,12 @@ export class Bird {
         else if (state == BirdState.HITGROUND) {
             this.dy = 0
             this.isgravity = false
+            this.bobheight = 0
         }
         else if (state == BirdState.HITPIPE) {
             this.dy = 0
             this.isgravity = false
+            this.bobheight = 0
         }
         this.state = state     
     }

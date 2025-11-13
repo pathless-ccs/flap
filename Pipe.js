@@ -49,7 +49,6 @@ export class Pipe {
         this.setPipeState(PipeState.GAMEOVER)
     }
 
-
     setPipeState(state){
         console.log(`set pipe state to ${state}`)
         if (state == PipeState.IDLE){

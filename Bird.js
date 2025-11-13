@@ -67,7 +67,7 @@ export class Bird {
         this.y = (this.y + this.dy)
         this.x = (this.x +this.dx) 
         if (this.isgravity) {
-            this.dy += 0.25
+            this.dy += 0.4
         }
 
         this.bobangle = (this.bobangle * 0.95) + (this.dy * 0.05)
@@ -122,7 +122,7 @@ export class Bird {
             this.isgravity = true
         }
         if (state == BirdState.ASCENDING) {
-            this.dy = -6
+            this.dy = -7
         }
         else if (state == BirdState.HITGROUND) {
             this.dy = 0

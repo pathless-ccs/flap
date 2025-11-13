@@ -27,7 +27,7 @@ export default class Game {
         this.setState(GameState.INTRO)
     }
     createPipes(){
-        var numberpipes = 5 
+        var numberpipes = 4
         this.pipes = [] 
         for (let i = 0; i < numberpipes; i++){
             this.pipes[i] = new Pipe (-2, 960+((1060/numberpipes)*i))
@@ -45,13 +45,13 @@ export default class Game {
         this.bird.draw(this.ctx)       
         this.floor.draw(this.ctx)
         for (let i = 0; i < this.pipes.length; i++){
-            this.pipes[i].draw(this.ctx)
+            this.pipes[i].draw(this.ctx,i)
         }
 
         if (this.state == GameState.INTRO) {
             this.ctx.font = "70px monospace"
             this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
-            this.ctx.fillText("FLAPPY BIRD", 300, 200)
+                
         }
         else if (this.state == GameState.READY) {
             this.ctx.font = "70px monospace"

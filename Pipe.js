@@ -30,8 +30,6 @@ export class Pipe {
         }
     }
 
-    
-      
     animate(){
         this.yCenter += this.dy
         this.x += this.dx
@@ -40,6 +38,10 @@ export class Pipe {
             this.x += 1060
         }
 
+    }
+
+    boundingBox() {    
+        return {x: 0, width: 960, y: (1000 - this.opening), height: 200}
     }
 
     startMoving(){

@@ -26,6 +26,7 @@ export class Background {
             this.x = 0
         }
     } 
+
     moving(){
         this.setBackgroundState(BackgroundState.MOVING)
     }

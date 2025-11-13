@@ -48,7 +48,7 @@ export class Bird {
         this.imagesArray[19] = "cailin.png";
         this.img = new Image()
         this.img.src = "sprites/"+this.imagesArray[Math.floor(Math.random() * 19.99999999)]
-        this.setBirdState(BirdState.IDLE)
+        this.setState(BirdState.IDLE)
     } 
 
     draw(ctx) { 
@@ -75,20 +75,20 @@ export class Bird {
         if (this.state == BirdState.GETTINGREADY) {
             this.stateCounter -= 1
             if (this.stateCounter == 0) {
-                this.setBirdState(BirdState.READY)
+                this.setState(BirdState.READY)
             } 
         }
     }
 
     prepare(){
-        this.setBirdState(BirdState.GETTINGREADY)
+        this.setState(BirdState.GETTINGREADY)
     }
     beginFlying(){
-       this.setBirdState(BirdState.FALLING)
+       this.setState(BirdState.FALLING)
     }
 
     jump() {
-        this.setBirdState(BirdState.ASCENDING)
+        this.setState(BirdState.ASCENDING)
     }
 
     isReady() {
@@ -105,7 +105,7 @@ export class Bird {
         this.setState(BirdState.HITGROUND)
     }
     
-    setBirdState(state){
+    setState(state){
         console.log(`set bird state to ${state}`)
         if (state == BirdState.IDLE){
             this.x = 480

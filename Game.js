@@ -21,7 +21,7 @@ export default class Game {
         document.addEventListener("keydown", this.keydown.bind(this))
         //document.addEventListener("keyup", this.keyup.bind(this))
         this.bird = new Bird ()
-        this.background = new Background ('Background.webp',-.5)
+        this.bg = new Background ('Background.webp',-.5)
         this.floor = new Floor ('Floor2.webp', -4)
         this.createPipes()
         this.setState(GameState.INTRO)
@@ -34,14 +34,13 @@ export default class Game {
         }
     }
     run() {
-        console.log ("running the game")
         this.frame()
 
     
     }
     frame() {
         this.ctx.clearRect(0, 0, 960, 720)
-        this.background.draw(this.ctx)
+        this.bg.draw(this.ctx)
         this.bird.draw(this.ctx)       
         this.floor.draw(this.ctx)
         for (let i = 0; i < this.pipes.length; i++){
@@ -50,16 +49,21 @@ export default class Game {
 
         if (this.state == GameState.INTRO) {
             this.ctx.font = "70px monospace"
+            this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
+            this.ctx.fillText("FLAPPY ", 300, 300)
+            this.ctx.font = "70px monospace"
             this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
-                
+            this.ctx.fillText("BIRD", 550, 300)
         }
         else if (this.state == GameState.READY) {
-            this.ctx.font = "70px monospace"
+            this.ctx.font = "50px monospace"
+            this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
+            this.ctx.fillText("PRESS", 300, 500)
             this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
-            this.ctx.fillText("PRESS SPACE", 300, 200)
+            this.ctx.fillText("SPACE to play!", 460, 500)
         }
 
-        this.background.animate()
+        this.bg.animate()
         this.floor.animate()  
         this.bird.animate()
         for (let i = 0; i < this.pipes.length; i++){
@@ -124,15 +128,17 @@ export default class Game {
         }
         else if (state == GameState.PLAYING){
             this.bird.beginFlying()
-        for (let i = 0; i < this.pipes.length; i++){
-            this.pipes[i].startMoving()
-        }
+            for (let i = 0; i < this.pipes.length; i++){
+                this.pipes[i].startMoving()
+            }
         }
         else if (state == GameState.GAMEOVER) {
-            this.pipe.stopMoving()
+            for (let i = 0; i < this.pipes.length; i++){
+                this.pipes[i].stopMoving()
+            }
             this.bird.hittingTheGround()
             this.floor.gameover()
-            this.background.notMoving()
+            this.bg.notMoving()
         }
         this.state = state
     }

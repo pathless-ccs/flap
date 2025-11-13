@@ -1,3 +1,9 @@
+
+const BackgroundState = {
+    MOVING: "moving",
+    NOTMOVING: "notmoving"
+}
+
 export class Background {
     constructor(imagefile,speed){
         this.x = 0
@@ -8,6 +14,7 @@ export class Background {
         this.img = new Image();
         this.img.src = imagefile;
         //img.onload = () => {
+        this.setBackgroundState(BackgroundState.MOVING)
     }
     draw(ctx){
         ctx.drawImage(this.img, this.x, 0, 960, 820);
@@ -19,18 +26,21 @@ export class Background {
             this.x = 0
         }
     } 
+    moving(){
+        this.setBackgroundState(BackgroundState.MOVING)
+    }
+
+    notMoving(){
+        this.setBackgroundState(BackgroundState.NOTMOVING)
+    }
+
+    setBackgroundState(state){
+        console.log(`set background state to ${state}`)
+        if (state == BackgroundState.MOVING){
+
+        } else if (state == BackgroundState.NOTMOVING){
+            this.dx = 0
+        }
+        this.state = state     
+    }
 }
- 
-
-
-const state= {
-    INTRO: "intro",
-    READY: "ready",
-    HITPIPE: "hitpipe",
-    HITGROUND: "hitground",
-    FALLING: "falling",
-    ASCENDING: "ascending",
-}
-
-
-

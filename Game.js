@@ -10,7 +10,8 @@ const GameState = {
     HITPIPE: "hitpipe",
     HITGROUND: "hitground",
     PLAYING: 'playing',
-    GAMEOVER: 'gameover'
+    GAMEOVER: 'gameover',
+
 }
 
 export default class Game {     

@@ -31,8 +31,6 @@ export class Pipe {
         }
     }
 
-    
-      
     animate(){
         this.yCenter += this.dy
         this.x += this.dx
@@ -43,6 +41,22 @@ export class Pipe {
 
     }
 
+    upperboundingBox() {
+        return { x: this.x, width: this.img.width, y: this.yCenter -(this.opening/2)-this.img.height, height: this.img.height }
+    }
+
+    lowerboundingBox() {
+        return { x: this.x, width: this.img.width, y: this.yCenter +(this.opening/2), height: this.img.height }
+    }
+
+    upperboundingBox() {
+        return { x: this.x, width: this.img.width, y: this.yCenter -(this.opening/2)-this.img.height, height: this.img.height }
+    }
+
+    lowerboundingBox() {
+        return { x: this.x, width: this.img.width, y: this.yCenter +(this.opening/2), height: this.img.height }
+    }
+
     startMoving(){
        this.setPipeState(PipeState.PLAYING)
     }
@@ -50,11 +64,9 @@ export class Pipe {
         this.setPipeState(PipeState.GAMEOVER)
     }
 
-
     setPipeState(state){
         console.log(`set pipe state to ${state}`)
         if (state == PipeState.IDLE){
-            console.log("setting pipe coordinates")
             this.x = this.startingPOS
             this.yCenter =  160+Math.random()*400 
             this.dx = 0

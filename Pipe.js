@@ -17,21 +17,17 @@ export class Pipe {
         this.img = new Image();
         this.img.src = 'pipe.png';
         this.setPipeState(PipeState.IDLE)
-
+        this.xRandom
     }    
     draw(ctx, i) {
         if (this.state != PipeState.IDLE) {
-        ctx.save()
-        ctx.translate(this.x, this.yCenter +(this.opening/2))
-        ctx.scale(1, 1)
-        ctx.drawImage(this.img, 0, 0)
-        ctx.restore()
-
-        ctx.save()
-        ctx.translate(this.x, this.yCenter -(this.opening/2))
-        ctx.scale(1, -1)
-        ctx.drawImage(this.img, 0, 0)
-        ctx.restore()
+            ctx.drawImage(this.img, this.x, this.yCenter + (this.opening/2))
+            ctx.save()
+            ctx.translate(this.x, this.yCenter - (this.opening/2))
+            ctx.scale(1,-1)
+            ctx.drawImage(this.img, 0, 0 )
+            ctx.restore()
+            ctx.fillText(`${this.startingPOS}`, this.x, this.yCenter)
         }
     }
 
@@ -39,10 +35,18 @@ export class Pipe {
         this.yCenter += this.dy
         this.x += this.dx
         this.x = (this.x + this.dx)
-        if(this.x <= -100){
-            this.x += 1060
+        if(this.x <= -200){
+            this.x +=1260
         }
 
+    }
+
+    upperboundingBox() {
+        return { x: this.x, width: this.img.width, y: this.yCenter -(this.opening/2)-this.img.height, height: this.img.height }
+    }
+
+    lowerboundingBox() {
+        return { x: this.x, width: this.img.width, y: this.yCenter +(this.opening/2), height: this.img.height }
     }
 
     upperboundingBox() {

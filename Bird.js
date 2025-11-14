@@ -59,7 +59,7 @@ export class Bird {
         ctx.save()
         ctx.translate(this.x, this.y + Math.sin(this.bobheight)*5)
         ctx.rotate(((this.bobangle * 3) * Math.PI) / 180)
-        ctx.drawImage(this.img, -width/2, 0, width, height)
+        ctx.drawImage(this.img, -width/2, -height/2, width, height)
         ctx.restore()
     }
     
@@ -98,7 +98,7 @@ export class Bird {
     }
 
     boundingBox() {
-        return {x: this.x, width: this.height, y: this.y, height: this.height}
+        return {x: this.x-this.width/2, width: this.height, y: this.y-this.height/2, height: this.height}
     }
     hittingThePipe() {
         this.setState(BirdState.HITPIPE)

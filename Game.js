@@ -74,6 +74,16 @@ export default class Game {
             console.log("bird hit floor")
             this.setState(GameState.GAMEOVER)
         }
+        for (let i = 0; i < this.pipes.length; i++) {
+            if (this.checkCollision(this.bird.boundingBox(),this.pipes[i].upperboundingBox())) {
+                console.log("bird hit pipe")
+                this.setState(GameState.GAMEOVER)
+            }
+            if (this.checkCollision(this.bird.boundingBox(),this.pipes[i].lowerboundingBox())) {
+                console.log("bird hit pipe")
+                this.setState(GameState.GAMEOVER)
+            }
+        }
 
         if (this.state == GameState.GETTINGREADY) {
            if (this.bird.isReady())
@@ -136,7 +146,6 @@ export default class Game {
             for (let i = 0; i < this.pipes.length; i++){
                 this.pipes[i].stopMoving()
             }
-            this.bird.hittingTheGround()
             this.floor.gameover()
             this.bg.notMoving()
         }

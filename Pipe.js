@@ -21,12 +21,17 @@ export class Pipe {
     }    
     draw(ctx, i) {
         if (this.state != PipeState.IDLE) {
-            ctx.drawImage(this.img, this.x, this.yCenter + (this.opening/2))
-            ctx.save()
-            ctx.translate(this.x, this.yCenter - (this.opening/2))
-            ctx.scale(1,-1)
-            ctx.drawImage(this.img, 0, 0 )
-            ctx.restore()
+        ctx.save()
+        ctx.translate(this.x, this.yCenter +(this.opening/2))
+        ctx.scale(1, 1)
+        ctx.drawImage(this.img, 0, 0)
+        ctx.restore()
+
+        ctx.save()
+        ctx.translate(this.x, this.yCenter -(this.opening/2))
+        ctx.scale(1, -1)
+        ctx.drawImage(this.img, 0, 0)
+        ctx.restore()
         }
     }
 
@@ -40,8 +45,12 @@ export class Pipe {
 
     }
 
-    boundingBox() {    
-        return {x: 0, width: 960, y: (1000 - this.opening), height: 200}
+    upperboundingBox() {
+        return { x: this.x, width: this.img.width, y: this.yCenter -(this.opening/2)-this.img.height, height: this.img.height }
+    }
+
+    lowerboundingBox() {
+        return { x: this.x, width: this.img.width, y: this.yCenter +(this.opening/2), height: this.img.height }
     }
 
     startMoving(){
@@ -54,7 +63,6 @@ export class Pipe {
     setPipeState(state){
         console.log(`set pipe state to ${state}`)
         if (state == PipeState.IDLE){
-            console.log("setting pipe coordinates")
             this.x = this.startingPOS
             this.yCenter =  160+Math.random()*400 
             this.dx = 0

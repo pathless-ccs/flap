@@ -30,7 +30,7 @@ export default class Game {
         var numberpipes = 4
         this.pipes = [] 
         for (let i = 0; i < numberpipes; i++){
-            this.pipes[i] = new Pipe (-2, 960+((1060/numberpipes)*i))
+            this.pipes[i] = new Pipe (-2, 1060+((1260/numberpipes)*i))
         }
     }
     run() {

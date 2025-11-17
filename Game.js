@@ -143,10 +143,20 @@ export default class Game {
                 this.pipes[i].startMoving()
             }
         }
+        else if (state == GameState.HITPIPE) {
+            for (let i = 0; i < this.pipes.length; i++){
+            this.pipes[i].stopmMving()
+            }
+            this.bird.hittingThePipe()
+            this.floor.gameover()
+            this.bg.notMoving()
+        }
+
         else if (state == GameState.GAMEOVER) {
             for (let i = 0; i < this.pipes.length; i++){
-                this.pipes[i].stopMoving()
+            this.pipes[i].stopMoving()
             }
+            this.bird.hittingTheGround()
             this.floor.gameover()
             this.bg.notMoving()
         }

@@ -59,7 +59,6 @@ export class Pipe {
             this.x +=1260 
             this.yRandom = Math.random()*400-200
         }
-
     }
 
 
@@ -73,15 +72,6 @@ export class Pipe {
     lowerboundingBox() {
         return { x: this.x, width: this.img.width, y: this.yCenter +(this.opening/2), height: this.img.height }
     }
-
-    upperboundingBox() {
-        return { x: this.x, width: this.img.width, y: this.yCenter -(this.opening/2)-this.img.height, height: this.img.height }
-    }
-
-    lowerboundingBox() {
-        return { x: this.x, width: this.img.width, y: this.yCenter +(this.opening/2), height: this.img.height }
-    }
-
     startMoving(){
        this.setPipeState(PipeState.PLAYING)
     }

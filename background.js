@@ -8,8 +8,9 @@ export class Background {
     constructor(imagefile,speed){
         this.x = 0
         this.y = 0
-        this.dx = speed
+        this.dx = 0
         this.dy = 0
+        this.speed = speed
         //Move Ground
         this.img = new Image();
         this.img.src = imagefile;
@@ -41,6 +42,7 @@ export class Background {
     setBackgroundState(state){
         console.log(`set background state to ${state}`)
         if (state == BackgroundState.MOVING){
+            this.dx = this.speed
 
         } else if (state == BackgroundState.NOTMOVING){
             this.dx = 0

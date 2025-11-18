@@ -30,7 +30,7 @@ export class Floor {
         return {x: 0, width: 960, y: (1000 - this.img.height), height: 200}
     }
 
-    intro(){
+    startRound(){
         this.setState(FloorState.INTRO)
     }
     playing(){

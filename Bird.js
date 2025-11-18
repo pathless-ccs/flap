@@ -82,6 +82,9 @@ export class Bird {
         }
     }
 
+    startRound() {
+        this.setState(BirdState.IDLE)
+    }
     prepare(){
         this.setState(BirdState.GETTINGREADY)
     }

@@ -124,11 +124,22 @@ export default class Game {
                 this.bird.jump()
             }
         }
+        else if (this.state == GameState.GAMEOVER) {
+            if (event.key == " ") {
+                this.setState(GameState.INTRO)
+            }
+        }
     }
 
     setState(state){
         console.log(`set game state to ${state}`)
-        if (state == GameState.IDLE){
+        if (state == GameState.INTRO){
+            this.bird.startRound()
+            this.bg.startRound()
+            this.floor.startRound()
+        for (let i = 0; i < this.pipes.length; i++){
+                this.pipes[i].startRound()
+            }
         }
 
         else if (state == GameState.GETTINGREADY){

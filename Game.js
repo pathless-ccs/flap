@@ -63,11 +63,6 @@ export default class Game {
             this.ctx.font = "bold 70px Courier"
             this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
             this.ctx.fillText("PRESS SPACE TO START", 75, 200)
-            this.ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-            this.ctx.shadowBlur = 10;
-            this.ctx.shadowOffsetX = 5;
-            this.ctx.shadowOffsetY = 5;
-
         }
         else if (this.state == GameState.INTRO) {
             this.ctx.font = "70px monospace"
@@ -151,7 +146,6 @@ export default class Game {
                 this.pipes[i].startRound()
             }
         }
-
         else if (state == GameState.GETTINGREADY){
             this.bird.prepare()
         }

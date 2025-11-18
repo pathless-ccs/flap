@@ -8,9 +8,9 @@ export class Floor {
     constructor(imagefile,speed){
         this.x = 0
         this.y = 0
-        this.dx = speed
+        this.dx = 0
         this.dy = 0
-        //Move Ground
+        this.speed = speed
         this.img = new Image();
         this.img.src = imagefile;
         //img.onload = () => {
@@ -42,7 +42,7 @@ export class Floor {
 
         setState(state) {
          if (state == FloorState.INTRO){
-            this.dx = 0
+            this.dx = this.speed
             this.dy = 0
         }
         else if (state == FloorState.PLAYING) {

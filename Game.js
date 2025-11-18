@@ -53,7 +53,7 @@ export default class Game {
         if (this.state == GameState.INTRO) {
             this.ctx.font = "bold 100px Courier"
             this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
-            this.ctx.fillText("FLAPPY BIRD", 150, 200)
+            this.ctx.fillText("FLAPPY SENIOR", 100, 200)
             this.ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
             this.ctx.shadowBlur = 10;
             this.ctx.shadowOffsetX = 5;
@@ -62,7 +62,7 @@ export default class Game {
         else if (this.state == GameState.READY) {
             this.ctx.font = "bold 70px Courier"
             this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
-            this.ctx.fillText("PRESS SPACE TO START", 75, 200)
+            this.ctx.fillText("PRESS SPACE TO START", 50, 200)
         }
         else if (this.state == GameState.INTRO) {
             this.ctx.font = "70px monospace"

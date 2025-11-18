@@ -48,7 +48,7 @@ export class Bird {
         this.imagesArray[18] = "kale.png";
         this.imagesArray[19] = "cailin.png";
         this.img = new Image()
-        this.img.src = "sprites/"+this.imagesArray[Math.floor(Math.random() * 19.99999999)
+        this.img.src = "sprites/"+this.imagesArray[Math.floor(Math.random() * 19.99999999)]
         this.setState(BirdState.IDLE)
     } 
 

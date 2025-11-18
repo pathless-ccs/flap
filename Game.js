@@ -52,7 +52,7 @@ export default class Game {
 
         if (this.state == GameState.INTRO) {
             this.ctx.font = "bold 100px Courier"
-            this.ctx.fillStyle = "rgba(247, 35, 247, 1)"
+            this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
             this.ctx.fillText("FLAPPY BIRD", 150, 200)
             this.ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
             this.ctx.shadowBlur = 10;

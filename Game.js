@@ -26,6 +26,8 @@ export default class Game {
         this.floor = new Floor ('Floor2.webp', -4)
         this.createPipes()
         this.setState(GameState.INTRO)
+        this.bobangle = 0
+        this.bobheight = 0
     }
     createPipes(){
         var numberpipes = 4

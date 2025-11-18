@@ -26,6 +26,8 @@ export default class Game {
         this.floor = new Floor ('Floor2.webp', -4)
         this.createPipes()
         this.setState(GameState.INTRO)
+        this.bobangle = 0
+        this.bobheight = 0
     }
     createPipes(){
         var numberpipes = 4
@@ -55,6 +57,9 @@ export default class Game {
             this.ctx.font = "70px monospace"
             this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
             this.ctx.fillText("BIRD", 550, 300)
+            this.bobangle = (this.bobangle * 0.95) + (this.dy * 0.05)
+
+            this.bobheight += 0.1
         }
         else if (this.state == GameState.READY) {
             this.ctx.font = "50px monospace"

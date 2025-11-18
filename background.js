@@ -27,6 +27,9 @@ export class Background {
         }
     } 
 
+    startRound() {
+        this.setBackgroundState(BackgroundState.MOVING)
+    }
     moving(){
         this.setBackgroundState(BackgroundState.MOVING)
     }

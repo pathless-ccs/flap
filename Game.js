@@ -51,24 +51,29 @@ export default class Game {
         }
 
         if (this.state == GameState.INTRO) {
-            this.ctx.font = "70px monospace"
-            this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
-            this.ctx.fillText("FLAPPY ", 300, 300)
-            this.ctx.font = "70px monospace"
-            this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
-            this.ctx.fillText("BIRD", 550, 300)
-            this.bobangle = (this.bobangle * 0.95) + (this.dy * 0.05)
-
-            this.bobheight += 0.1
+            this.ctx.font = "bold 100px Courier"
+            this.ctx.fillStyle = "rgba(247, 35, 247, 1)"
+            this.ctx.fillText("FLAPPY BIRD", 150, 200)
+            this.ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+            this.ctx.shadowBlur = 10;
+            this.ctx.shadowOffsetX = 5;
+            this.ctx.shadowOffsetY = 5;
         }
         else if (this.state == GameState.READY) {
-            this.ctx.font = "50px monospace"
+            this.ctx.font = "bold 70px Courier"
             this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
-            this.ctx.fillText("PRESS", 300, 500)
-            this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
-            this.ctx.fillText("SPACE to play!", 460, 500)
-        }
+            this.ctx.fillText("PRESS SPACE TO START", 75, 200)
+            this.ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+            this.ctx.shadowBlur = 10;
+            this.ctx.shadowOffsetX = 5;
+            this.ctx.shadowOffsetY = 5;
 
+        }
+        else if (this.state == GameState.INTRO) {
+            this.ctx.font = "70px monospace"
+            this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
+            this.ctx.fillText("GAMEOVER", 300, 300)
+        }
         this.bg.animate()
         this.floor.animate()  
         this.bird.animate()
@@ -129,11 +134,22 @@ export default class Game {
                 this.bird.jump()
             }
         }
+        else if (this.state == GameState.GAMEOVER) {
+            if (event.key == " ") {
+                this.setState(GameState.INTRO)
+            }
+        }
     }
 
     setState(state){
         console.log(`set game state to ${state}`)
-        if (state == GameState.IDLE){
+        if (state == GameState.INTRO){
+            this.bird.startRound()
+            this.bg.startRound()
+            this.floor.startRound()
+        for (let i = 0; i < this.pipes.length; i++){
+                this.pipes[i].startRound()
+            }
         }
 
         else if (state == GameState.GETTINGREADY){

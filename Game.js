@@ -90,10 +90,6 @@ export default class Game {
             if (this.checkCollision(this.bird.boundingBox(),this.pipes[i].lowerboundingBox())) {
                 this.setState(GameState.GAMEOVER)
             }
-            if (this.checkCollision(this.bird.boundingBox(),this.pipes[i].middleboundingBox())) {
-                this.birdscore + 1
-                console.log(this.birdscore)
-            }
         }
 
         if (this.state == GameState.GETTINGREADY) {

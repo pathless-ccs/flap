@@ -28,7 +28,7 @@ export class Pipe {
             ctx.scale(1,-1)
             ctx.drawImage(this.img, 0, 0 )
             ctx.restore()
-            ctx.fillText(`${this.startingPOS}`, this.x, this.y)
+            //ctx.fillText(`${this.startingPOS}`, this.x, this.y)
 
         }
     }
@@ -64,13 +64,6 @@ export class Pipe {
 
     startRound() {
         this.setPipeState(PipeState.IDLE)
-    }
-    upperboundingBox() {
-        return { x: this.x, width: this.img.width, y: this.yCenter -(this.opening/2)-this.img.height, height: this.img.height }
-    }
-
-    lowerboundingBox() {
-        return { x: this.x, width: this.img.width, y: this.yCenter +(this.opening/2), height: this.img.height }
     }
     startMoving(){
        this.setPipeState(PipeState.PLAYING)

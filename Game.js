@@ -11,19 +11,18 @@ const GameState = {
     HITGROUND: "hitground",
     PLAYING: 'playing',
     GAMEOVER: 'gameover',
-
 }
 
 export default class Game {     
     constructor() {
-        
+        this.speed = 0
         const canvas = document.getElementById("game")
         this.ctx = canvas.getContext("2d")
         document.addEventListener("keydown", this.keydown.bind(this))
         //document.addEventListener("keyup", this.keyup.bind(this))
         this.bird = new Bird ()
         this.bg = new Background ('Background.webp',-.5)
-        this.floor = new Floor ('Floor2.webp', -4)
+        this.floor = new Floor ('Floor2.webp', -4 + this.speed)
         this.createPipes()
         this.setState(GameState.INTRO)
         this.bobangle = 0

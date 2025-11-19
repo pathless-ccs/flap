@@ -65,8 +65,11 @@ export default class Game {
         else if (this.state == GameState.GAMEOVER) {
             this.ctx.font = "70px monospace"
             this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
-            this.ctx.fillText("GAMEOVER", 300, 300)
-        }
+            this.ctx.fillText("GAMEOVER", 360, 300)
+            this.ctx.fillText("Press      to play again", 10, 425)
+            this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
+            this.ctx.fillText("SPACE", 230, 425)
+        }   
         this.bg.animate()
         this.floor.animate()  
         this.bird.animate()

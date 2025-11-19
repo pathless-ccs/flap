@@ -67,6 +67,11 @@ export default class Game {
             this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
             this.ctx.fillText("GAMEOVER", 300, 300)
         }
+        else if (this.state == GameState.PLAYING) {
+            this.ctx.font = "50px monospace"
+            this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
+            this.ctx.fillText(`${this.birdscore}`, 460, 100)
+        }
         this.bg.animate()
         this.floor.animate()  
         this.bird.animate()
@@ -79,8 +84,8 @@ export default class Game {
             var firstpipebounds = this.pipes[i].upperboundingBox()
             this.pipes[i].animate()
             var secondpipebounds = this.pipes[i].upperboundingBox()
-
-            if ((birdbounds.x > firstpipebounds.x) || (birdbounds.x <= secondpipebounds.x)) {
+            console.log(firstpipebounds, birdbounds)
+            if ((birdbounds.x < firstpipebounds.x) && (birdbounds.x >= secondpipebounds.x)) {
                 this.birdscore += 1
             }
 
@@ -89,10 +94,6 @@ export default class Game {
             }
             if (this.checkCollision(this.bird.boundingBox(),this.pipes[i].lowerboundingBox())) {
                 this.setState(GameState.GAMEOVER)
-            }
-            if (this.checkCollision(this.bird.boundingBox(),this.pipes[i].middleboundingBox())) {
-                this.birdscore + 1
-                console.log(this.birdscore)
             }
         }
 
@@ -147,6 +148,7 @@ export default class Game {
             this.bird.startRound()
             this.bg.startRound()
             this.floor.startRound()
+            this.birdscore = 0
         for (let i = 0; i < this.pipes.length; i++){
                 this.pipes[i].startRound()
             }

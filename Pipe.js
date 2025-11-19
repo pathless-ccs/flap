@@ -50,6 +50,14 @@ export class Pipe {
               height: this.img.height
             }
     }
+    middleboundingBox() {
+        return {
+            x: 
+            width:
+            y:
+            height:
+        }
+    }
 
     animate(){
         this.y += this.dy

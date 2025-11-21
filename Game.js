@@ -69,9 +69,9 @@ export default class Game {
                 this.ctx.fillText("Press      to play again", 10, 425)
                 this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
                 this.ctx.fillText("SPACE", 230, 425)
-            if ((this.txtflash % 40) > 20){
+            if ((this.txtflash % 50) > 25){
                 this.ctx.font = "70px monospace"
-                this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
+                this.ctx.fillStyle = "rgba(0, 0, 0, 1)"  
                 this.ctx.fillText("GAMEOVER", 360, 300)
 
             }

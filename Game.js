@@ -15,20 +15,20 @@ const GameState = {
 
 export default class Game {     
     constructor() {
-        this.speed = 0
         const canvas = document.getElementById("game")
         this.ctx = canvas.getContext("2d")
         document.addEventListener("keydown", this.keydown.bind(this))
         //document.addEventListener("keyup", this.keyup.bind(this))
         this.bird = new Bird ()
         this.bg = new Background ('Background.webp',-.5)
-        this.floor = new Floor ('Floor2.webp', -4 + this.speed)
+        this.floor = new Floor ('Floor2.webp', -4)
         this.createPipes()
         this.setState(GameState.INTRO)
         this.bobangle = 0
         this.bobheight = 0
         this.birdscore = 0
         this.whiteflashct = 0
+        this.txtflash = 0
     }
     createPipes(){
         var numberpipes = 4
@@ -65,13 +65,17 @@ export default class Game {
             this.ctx.fillText("PRESS SPACE TO START", 50, 200)
         }
         else if (this.state == GameState.GAMEOVER) {
-            this.ctx.font = "70px monospace"
-            this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
-            this.ctx.fillText("GAMEOVER", 360, 300)
-            this.ctx.fillText("Press      to play again", 10, 425)
-            this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
-            this.ctx.fillText("SPACE", 230, 425)
-        }   
+            this.txtflash ++
+                this.ctx.fillText("Press      to play again", 10, 425)
+                this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
+                this.ctx.fillText("SPACE", 230, 425)
+            if ((this.txtflash % 40) > 20){
+                this.ctx.font = "70px monospace"
+                this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
+                this.ctx.fillText("GAMEOVER", 360, 300)
+
+            }
+            }   
         else if (this.state == GameState.PLAYING) {
             this.ctx.font = "50px monospace"
             this.ctx.fillStyle = "rgba(0, 0, 0, 1)"

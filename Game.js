@@ -165,7 +165,7 @@ export default class Game {
             for (let i = 0; i < this.pipes.length; i++){
                 this.pipes[i].stopMoving()
             }
-            this.whiteflashct = 20
+            this.whiteflashct = 1
             this.bird.hittingThePipe()
             this.floor.gameover()
             this.bg.notMoving()

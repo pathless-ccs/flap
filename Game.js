@@ -29,6 +29,10 @@ export default class Game {
         this.birdscore = 0
         this.whiteflashct = 0
         this.txtflash = 0
+        this.highscore = 0
+
+        this.highscore = localStorage.getItem("highscore")
+
     }
     createPipes(){
         var numberpipes = 4
@@ -54,6 +58,9 @@ export default class Game {
             this.ctx.font = "bold 100px Courier"
             this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
             this.ctx.fillText("FLAPPY SENIOR", 100, 200)
+            this.ctx.font = "bold 100px Courier"
+            this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
+            this.ctx.fillText(`HIGH SCORE: ${this.highscore}`, 100, 600)
             this.ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
             this.ctx.shadowBlur = 10;
             this.ctx.shadowOffsetX = 5;
@@ -66,13 +73,16 @@ export default class Game {
         }
         else if (this.state == GameState.GAMEOVER) {
             this.txtflash ++
-                this.ctx.fillText("Press      to play again", 10, 425)
+                this.ctx.fillText("Press      to play again", 10, 600)
                 this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
-                this.ctx.fillText("SPACE", 230, 425)
+                this.ctx.fillText("SPACE", 230, 600)
             if ((this.txtflash % 40) > 20){
                 this.ctx.font = "70px monospace"
                 this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
                 this.ctx.fillText("GAMEOVER", 360, 300)
+                this.ctx.font = "70px monospace"
+                this.ctx.fillStyle = "rgba(0, 0, 0, 1)"
+                this.ctx.fillText(`YOUR SCORE WAS ${this.birdscore}`, 200, 425)
 
             }
             }   
@@ -90,6 +100,13 @@ export default class Game {
             this.whiteflashct--
         }
 
+        if (this.birdscore > parseInt(localStorage.getItem("highscore"))) {
+            localStorage.setItem("highscore", this.birdscore)
+        }
+
+        if (this.storagedHighScore  || this.birdscore > parseInt(this.storagedHighScore)) {
+            localStorage.setItem("highscore", this.birdscore)
+        }
         // Animate
         this.bg.animate()
         this.floor.animate()  
@@ -179,6 +196,10 @@ export default class Game {
             this.bird.hittingTheGround()
             this.floor.gameover()
             this.bg.notMoving()
+            if (this.birdscore > this.highscore) {
+                this.highscore = this.birdscore
+                localStorage.setItem("highscore",this.highscore)
+            }
         }
         this.state = state
     }

@@ -28,7 +28,7 @@ export class Pipe {
             ctx.scale(1,-1)
             ctx.drawImage(this.img, 0, 0 )
             ctx.restore()
-            //ctx.fillText(`${this.startingPOS}`, this.x, this.y)
+
 
         }
     }
@@ -50,7 +50,6 @@ export class Pipe {
               height: this.img.height
             }
     }
-
     animate(){
         this.y += this.dy
         this.x += this.dx

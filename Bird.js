@@ -3,8 +3,8 @@ const BirdState = {
     IDLE: "idle",
     READY: "ready",
     GETTINGREADY: "gettingready",
-    HITPIPE: "hitpipe",
-    HITGROUND: "hitground",
+    HITPIPE: "HITPIPE",
+    HITGROUND: "HITGROUND",
     FALLING: "falling",
     ASCENDING: "ascending"
 }
@@ -56,6 +56,10 @@ export class Bird {
         this.setState(BirdState.IDLE)
     } 
 
+    log(str) {
+        var seconds = Date.now() / 1000
+        console.log(`${seconds} %c[BIRD] ${str}`,"color:orange")
+    }
     draw(ctx) { 
         var height = this.height
         var scale = this.height/this.img.height
@@ -84,6 +88,12 @@ export class Bird {
                 this.setState(BirdState.READY)
             } 
         }
+        if (this.state == BirdState.HITPIPE) {
+            this.stateCounter -= 1
+            if (this.stateCounter == 0) {
+                this.setState(BirdState.HITGROUND)
+            }
+        }
     }
 
     startRound() {
@@ -109,13 +119,14 @@ export class Bird {
     }
     hittingThePipe() {
         this.setState(BirdState.HITPIPE)
+        this.dy -= 10 
     }
     hittingTheGround() {
         this.setState(BirdState.HITGROUND)
     }
     
     setState(state){
-        console.log(`set bird state to ${state}`)
+        this.log(`set state to ${state}`)
         if (state == BirdState.IDLE){
             this.x = 480
             this.y = 360
@@ -129,16 +140,19 @@ export class Bird {
             this.isgravity = true
         }
         if (state == BirdState.ASCENDING) {
-            this.dy = -7
+            this.dy = -8
+        }
+        else if (state == BirdState.HITPIPE) {
+            this.state = BirdState.FALLING
+            this.bobheight = 0
+
         }
         else if (state == BirdState.HITGROUND) {
             this.dy = 0
             this.isgravity = false
             this.bobheight = 0
         }
-        else if (state == BirdState.HITPIPE) {
-            this.state = BirdState.FALLING
-        }
+
         this.state = state     
     }
 }

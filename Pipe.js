@@ -54,9 +54,9 @@ export class Pipe {
         this.y += this.dy
         this.x += this.dx
         this.x = (this.x + this.dx)
-        if(this.x <= -200){
+        if(this.x <= -150){
             this.x +=1260 
-            this.yRandom = Math.random()*400-200
+            this.yRandom = Math.random()*300-150
         }
     }
 

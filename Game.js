@@ -33,6 +33,8 @@ export default class Game {
 
         this.highscore = localStorage.getItem("highscore")
 
+        this.audio = new Audio('last.mp3')
+
     }
     createPipes(){
         var numberpipes = 4
@@ -53,6 +55,8 @@ export default class Game {
         for (let i = 0; i < this.pipes.length; i++){
             this.pipes[i].draw(this.ctx,i)
         }
+
+        this.audio.play()
 
         if (this.state == GameState.INTRO) {
             this.ctx.font = "bold 100px Courier"

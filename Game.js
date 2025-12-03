@@ -133,7 +133,7 @@ export default class Game {
                 var secondpipebounds = this.pipes[i].upperboundingBox()
                 //console.log(firstpipebounds, birdbounds)
                 if ((birdbounds.x < firstpipebounds.x) && (birdbounds.x >= secondpipebounds.x)) {
-                    this.birdscore += 1
+                   this.score()
                 }
 
                 if (this.checkCollision(this.bird.boundingBox(),this.pipes[i].upperboundingBox())) {
@@ -150,7 +150,9 @@ export default class Game {
         window.requestAnimationFrame(this.frame.bind(this))
     }
 
-
+    score(){ 
+     this.birdscore += 1
+    }
 
     log(str) {
         var seconds = Date.now() / 1000

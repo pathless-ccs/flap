@@ -29,30 +29,29 @@ export class Bird {
         this.imagesArray = new Array()
         this.imagesArray[0] = "jasper.png";
         this.imagesArray[1] = "tyler.png";
-        this.imagesArray[2] = "nicetyler.png";
-        this.imagesArray[3] = "zale.png";
-        this.imagesArray[4] = "duo.png";
-        this.imagesArray[5] = "emma.png";
-        this.imagesArray[6] = "badtyler.png";
-        this.imagesArray[7] = "melodih.png";
-        this.imagesArray[8] = "connor.png";
-        this.imagesArray[9] = "bill.png";
-        this.imagesArray[10] = "madih.png";
-        this.imagesArray[11] = "zaleington.png";
-        this.imagesArray[12] = "haydih.png";
-        this.imagesArray[13] = "anai.png";
-        this.imagesArray[14] = "sophington.png";
-        this.imagesArray[15] = "melody.png";
-        this.imagesArray[16] = "car.png";
-        this.imagesArray[17] = "chain.png";
-        this.imagesArray[18] = "kale.png";
-        this.imagesArray[19] = "cailin.png";
-        this.imagesArray[20] = "hdayin.png";
-        this.imagesArray[21] = "conneor.png";
-        this.imagesArray[22] = "madi.png";
-        this.imagesArray[23] = "md.png";
-        this.imagesArray[24] = "mel.png";
-        this.imagesArray[25] = "sop.png";
+        this.imagesArray[2] = "zale.png";
+        this.imagesArray[3] = "duo.png";
+        this.imagesArray[4] = "emma.png";
+        this.imagesArray[5] = "badtyler.png";
+        this.imagesArray[6] = "melodih.png";
+        this.imagesArray[7] = "connor.png";
+        this.imagesArray[8] = "bill.png";
+        this.imagesArray[9] = "madih.png";
+        this.imagesArray[10] = "soph.png";
+        this.imagesArray[11] = "haydih.png";
+        this.imagesArray[12] = "anai.png";
+        this.imagesArray[13] = "sophington.png";
+        this.imagesArray[14] = "melody.png";
+        this.imagesArray[15] = "car.png";
+        this.imagesArray[16] = "chain.png";
+        this.imagesArray[17] = "kale.png";
+        this.imagesArray[18] = "cailin.png";
+        this.imagesArray[19] = "hdayin.png";
+        this.imagesArray[20] = "conneor.png";
+        this.imagesArray[21] = "madi.png";
+        this.imagesArray[22] = "md.png";
+        this.imagesArray[23] = "mel.png";
+        this.imagesArray[24] = "zaleington.png";
         this.loadBird(Math.floor(Math.random() * 23.99999999))
         this.setState(BirdState.IDLE)
     }
@@ -97,15 +96,22 @@ export class Bird {
         }
     }
     loadBird(birdnumber) {
+        // HUH???? modulo should solve this!
+        if (birdnumber == this.imagesArray.length-1) {
+            birdnumber = 0
+        } else if (birdnumber == 0) {
+            birdnumber = this.imagesArray.length - 1
+        }
         this.currentbirdnumber = birdnumber
         this.img = new Image()
-        console.log(`loading bird ${this.currentbirdnumber}`)
+        //console.log(`loading bird ${birdnumber}`)
         this.img.src = "sprites/"+this.imagesArray[birdnumber]
     }
     nextBird() {
         this.loadBird((this.currentbirdnumber + 1)%this.imagesArray.length)
     }
     lastBird() {
+        //console.log(`current ${this.currentbirdnumber} length ${this.imagesArray.length}`)
         this.loadBird((this.currentbirdnumber - 1)%this.imagesArray.length)
     }
     startRound() {

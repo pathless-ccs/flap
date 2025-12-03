@@ -28,8 +28,6 @@ export class Pipe {
             ctx.scale(1,-1)
             ctx.drawImage(this.img, 0, 0 )
             ctx.restore()
-
-
         }
     }
 
@@ -57,9 +55,9 @@ export class Pipe {
         if(this.x <= -250){
             this.x +=1310 
             this.yRandom = Math.random()*400-200
+            this.xRandom = 50+Math.random()*100
         }
     }
-
 
     startRound() {
         this.setPipeState(PipeState.IDLE)
@@ -77,7 +75,7 @@ export class Pipe {
             this.x = this.startingPOS
             this.y = 360
             this.dx = 0
-            this.xRandom = 50+Math.random()*100
+            
         }else if (state == PipeState.PLAYING){
           this.dx = -2 
         } else if (state == PipeState.GAMEOVER){

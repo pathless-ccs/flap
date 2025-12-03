@@ -51,10 +51,11 @@ export class Bird {
         this.imagesArray[21] = "conneor.png";
         this.imagesArray[22] = "madi.png";
         this.imagesArray[23] = "md.png";
-        this.img = new Image()
-        this.img.src = "sprites/"+this.imagesArray[Math.floor(Math.random() * 23.99999999)]
+        this.imagesArray[24] = "mel.png";
+        this.imagesArray[25] = "sop.png";
+        this.loadBird(Math.floor(Math.random() * 23.99999999))
         this.setState(BirdState.IDLE)
-    } 
+    }
 
     log(str) {
         var seconds = Date.now() / 1000
@@ -95,7 +96,18 @@ export class Bird {
             }
         }
     }
-
+    loadBird(birdnumber) {
+        this.currentbirdnumber = birdnumber
+        this.img = new Image()
+        console.log(`loading bird ${this.currentbirdnumber}`)
+        this.img.src = "sprites/"+this.imagesArray[birdnumber]
+    }
+    nextBird() {
+        this.loadBird((this.currentbirdnumber + 1)%this.imagesArray.length)
+    }
+    lastBird() {
+        this.loadBird((this.currentbirdnumber - 1)%this.imagesArray.length)
+    }
     startRound() {
         this.setState(BirdState.IDLE)
     }

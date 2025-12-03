@@ -34,6 +34,7 @@ export default class Game {
         this.highscore = localStorage.getItem("highscore")
 
         this.audio = new Audio('last.mp3')
+        this.audio.play()
 
     }
     createPipes(){
@@ -56,8 +57,6 @@ export default class Game {
             this.pipes[i].draw(this.ctx,i)
         }
 
-        this.audio.play()
-
         if (this.state == GameState.INTRO) {
             this.ctx.font = "bold 100px Courier"
             this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
@@ -65,10 +64,9 @@ export default class Game {
             this.ctx.font = "bold 100px Courier"
             this.ctx.fillStyle = "rgba(144, 9, 255, 1)"
             this.ctx.fillText(`HIGH SCORE: ${this.highscore}`, 100, 600)
-            this.ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-            this.ctx.shadowBlur = 10;
-            this.ctx.shadowOffsetX = 5;
-            this.ctx.shadowOffsetY = 5;
+            this.ctx.font = "bold 50px Courier"
+            this.fillStyle = "rgba(0,0,0,0)"
+            this.ctx.fillText("USE ARROWS TO CYCLE CHARACTER", 50,300)
         }
         else if (this.state == GameState.READY) {
             this.ctx.font = "bold 70px Courier"
@@ -227,6 +225,11 @@ export default class Game {
             if (event.key == " ") {
                 this.setState(GameState.GETTINGREADY)
             }
+        }   if (event.key == "ArrowRight") {
+            this.bird.nextBird()
+        }
+            if (event.key == "ArrowLeft") {
+            this.bird.lastBird()
         }
         else if (this.state == GameState.READY) {
             if (event.key == " ") {

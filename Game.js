@@ -235,9 +235,6 @@ export default class Game {
         }   if (event.key == "ArrowRight") {
             this.bird.nextBird()
         }
-            if (event.key == "ArrowLeft") {
-            this.bird.lastBird()
-        }
         else if (this.state == GameState.READY) {
             if (event.key == " ") {
                 this.setState(GameState.PLAYING)

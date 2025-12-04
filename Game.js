@@ -152,6 +152,9 @@ export default class Game {
 
     score(){ 
      this.birdscore += 1
+     for (let i = 0; i < this.pipes.length; i++) {
+     this.pipes[i].setDifficulty(this.birdscore)
+     }
     }
 
     log(str) {

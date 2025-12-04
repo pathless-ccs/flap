@@ -19,6 +19,7 @@ export class Pipe {
         this.setPipeState(PipeState.IDLE)
         this.xRandom = 0
         this.yRandom = 0
+        this.difficulty = 0
     }    
     draw(ctx, i) {
         if (this.state != PipeState.IDLE) {
@@ -54,11 +55,18 @@ export class Pipe {
         this.x = (this.x + this.dx)
         if(this.x <= -250){
             this.x +=1310 
-            this.yRandom = Math.random()*400-200
-            this.xRandom = 50+Math.random()*100
+            console.log(`${this.difficulty}`)
+            var xRandomrange = this.difficulty*10
+            var yRandomrange = this.difficulty*10
+            this.yRandom = Math.random()*yRandomrange-(yRandomrange/2)
+            this.xRandom = Math.random()*xRandomrange-(xRandomrange/2)
+
         }
     }
 
+    setDifficulty(difficulty) {
+        this.difficulty = difficulty
+    }
     startRound() {
         this.setPipeState(PipeState.IDLE)
     }

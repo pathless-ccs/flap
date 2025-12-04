@@ -77,6 +77,7 @@ export class Bird {
             this.dy += 0.4
         }
 
+    //prevent bird from exiting screen
         if (this.y < 0) {
             this.y = 0
         }

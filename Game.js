@@ -34,7 +34,6 @@ export default class Game {
         this.highscore = localStorage.getItem("highscore")
 
         this.audio = new Audio('last.mp3')
-        this.audio.play()
 
     }
     createPipes(){
@@ -176,6 +175,7 @@ export default class Game {
         }
         else if (state == GameState.GETTINGREADY){
             this.bird.prepare()
+            this.audio.play()
         }
         else if (state == GameState.READY) {
             

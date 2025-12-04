@@ -77,6 +77,10 @@ export class Bird {
             this.dy += 0.4
         }
 
+        if (this.y < 0) {
+            this.y = 0
+        }
+
         this.bobangle = (this.bobangle * 0.95) + (this.dy * 0.05)
 
         this.bobheight += 0.1

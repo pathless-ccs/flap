@@ -134,6 +134,7 @@ export default class Game {
                 //console.log(firstpipebounds, birdbounds)
                 if ((birdbounds.x < firstpipebounds.x) && (birdbounds.x >= secondpipebounds.x)) {
                    this.score()
+
                 }
 
                 if (this.checkCollision(this.bird.boundingBox(),this.pipes[i].upperboundingBox())) {
@@ -152,6 +153,10 @@ export default class Game {
 
     score(){ 
      this.birdscore += 1
+     for (let i = 0; i < this.pipes.length; i++){
+        this.pipes[i].setDIF()
+     }
+
     }
 
     log(str) {
